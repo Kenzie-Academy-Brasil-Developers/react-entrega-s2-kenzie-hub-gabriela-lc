@@ -1,0 +1,72 @@
+
+#imgLogin{
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+.conteinerLogin{
+    width: 90%;
+    max-width: 370px;
+    margin: auto;
+
+    background-color: #212529;
+    color: #F8F9FA;
+
+    padding: 34px 18px;
+}
+
+.conteinerLogin h2{
+    font-size: 15px;
+    margin-bottom: 23px;
+}
+
+.divRedCadastro p{
+    font-size: 10px;
+    color: #868E96;
+
+    margin-bottom: 18px;
+}
+
+.divRedCadastro button{
+    height: 39px;
+    width: 100%;
+
+    background: #868E96;
+    border: 1px solid #868E96;
+    border-radius: 4px;
+    color: #F8F9FA;
+
+}
+
+.divRedCadastro button:hover{
+    background: #343B41;
+    border: 1px solid #343B41;
+    cursor: pointer;
+}
+
+@media (min-width: 426px){
+    #imgLogin{
+        width: 144px;
+        margin-top: 77px;
+        margin-bottom: 36px;
+    }
+
+    .conteinerLogin{
+        padding: 42px 22px;
+    }
+
+    .conteinerLogin h2{
+        font-size: 18px;
+        margin-bottom: 28px;
+    }
+
+    .divRedCadastro p{
+        font-size: 12px;
+        margin-bottom: 22px;
+    }
+
+    .divRedCadastro button{
+        height: 48px;
+    }
+
+}
