@@ -1,4 +1,158 @@
 
-div{
-    color: aliceblue;
+.navbar{
+    height: 70px;
+    width: 100%;
+    
+    border-bottom: 1px solid #212529;
+}
+
+.navbar div{
+    height: 100%;
+    width: 92%;
+    max-width: 780px;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar img{
+    width: 105px;
+}
+
+.navbar button{
+    width: 55px;
+    height: 32px;
+
+    background: #212529;
+    border-radius: 4px;
+    border: none;
+
+    font-weight: 600;
+    font-size: 12px;
+    color: #F8F9FA;
+}
+
+.navbar button:hover{
+    background: #343B41;
+    cursor: pointer;
+}
+
+.headerDashboard{
+    height: 130px;
+    width: 100%;
+
+    border-bottom: 1px solid #212529;
+}
+
+.headerDashboard div{
+    height: 100%;
+    width: 92%;
+    max-width: 780px;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 35px 0;
+}
+
+.headerDashboard h1{
+    font-weight: 700;
+    font-size: 18px;
+    color: #F8F9FA;
+    margin: 0;
+}
+
+.headerDashboard p{
+    font-weight: 400;
+    font-size: 12px;
+    color: #868E96;
+}
+
+.headerMain{
+    height: 72px;
+    width: 92%;
+    max-width: 780px;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 0;
+}
+
+
+.headerMain h2{
+    font-weight: 600;
+    font-size: 16px;
+    color: #F8F9FA;
+}
+
+.headerMain button{
+    width: 32px;
+    height: 32px;
+    background: #212529;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.headerMain button:hover{
+    cursor: pointer;
+    background-color: #343B41;
+}
+
+
+.dashboardNaoLogado{
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0 20px
+}
+.dashboardNaoLogado h1{
+    color: #F8F9FA;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.dashboardNaoLogado button{
+    height: 39px;
+    border: 1px solid #FF577F;
+    border-radius: 4px;
+    background-color: #FF577F;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 27px;
+
+    padding: 0 15px;
+}
+
+.dashboardNaoLogado button:hover{
+    background-color: #FF427F;
+    border: 1px solid #FF427F;
+    cursor: pointer;
+}
+
+@media (min-width: 426px){
+
+    .dashboardNaoLogado h1{
+        font-size: 25px;
+    }
+
+    .dashboardNaoLogado button{
+        height: 48px;
+        font-size: 16px;
+    }
+
 }

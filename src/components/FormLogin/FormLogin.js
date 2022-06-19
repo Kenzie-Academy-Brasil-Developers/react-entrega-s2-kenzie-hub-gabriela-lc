@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import {useHistory} from "react-router-dom"
 import axios from "axios"
 
-function FormLogin({setShowModal, setModalMessage}){
+function FormLogin({setShowModal, setModalMessage, setIsLoged}){
 
     const formSchema = yup.object().shape({
         email: yup.string().required("Email obrigatório").email("Email não válido"),
@@ -23,8 +23,10 @@ function FormLogin({setShowModal, setModalMessage}){
     function handleForm(data){
         axios.post("https://kenziehub.herokuapp.com/sessions", data)
             .then((res) => {
-                console.log(res.data.token)
+                console.log(res.data)
                 localStorage.setItem("token",res.data.token)
+                localStorage.setItem("userID",res.data.user.id)
+                setIsLoged(true)
                 history.push("/dashboard")
             })
             .catch((err) => {

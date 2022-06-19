@@ -9,11 +9,12 @@ function App() {
 
   const [showModal, setShowModal] = useState(false)
   const [modalMessage, setModalMessage] = useState("")
+  const [isLoged, setIsLoged] = useState(false)
 
   return (
     <div className="App">
       {showModal && <Modal setShowModal={setShowModal} modalMessage={modalMessage}/>}
-      <Routes setShowModal={setShowModal} setModalMessage={setModalMessage}/>
+      <Routes setShowModal={setShowModal} setModalMessage={setModalMessage} isLoged={isLoged} setIsLoged={setIsLoged}/>
     </div>
   );
 }
