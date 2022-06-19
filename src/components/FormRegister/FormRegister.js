@@ -23,16 +23,12 @@ function FormRegister({setShowModal, setModalMessage}){
       })
 
     function handleForm(data){
-        console.log(data);
-
         axios.post("https://kenziehub.herokuapp.com/users", data)
             .then((res) => {
-                console.log(res);
                 setShowModal(true)
                 setModalMessage("Conta criada com sucesso")
             })
             .catch((err) => {
-                console.log(err);
                 setShowModal(true)
                 setModalMessage("Ops! Algo deu errado")
 

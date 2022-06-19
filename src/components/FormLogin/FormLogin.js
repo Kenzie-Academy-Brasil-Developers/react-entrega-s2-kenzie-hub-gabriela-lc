@@ -23,7 +23,6 @@ function FormLogin({setShowModal, setModalMessage, setIsLoged}){
     function handleForm(data){
         axios.post("https://kenziehub.herokuapp.com/sessions", data)
             .then((res) => {
-                console.log(res.data)
                 localStorage.setItem("token",res.data.token)
                 localStorage.setItem("userID",res.data.user.id)
                 setIsLoged(true)

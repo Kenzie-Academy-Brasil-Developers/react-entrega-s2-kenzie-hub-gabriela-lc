@@ -9,7 +9,6 @@ function Register({setShowModal, setModalMessage}){
 
     return(
         <>
-            {/* {showModal && <Modal getShowModal={getShowModal} modalMessage={modalMessage}/>} */}
             <header id="headerCadastro">
               <img src="./Logo.png" alt="Logo"/>
               <button onClick={() => history.push("/")}>Voltar</button>

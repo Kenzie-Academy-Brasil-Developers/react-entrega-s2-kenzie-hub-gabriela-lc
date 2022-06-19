@@ -1,6 +1,5 @@
 import "./Modal.css"
 
-
 function Modal({setShowModal, modalMessage}){
 
     return(
