@@ -1,0 +1,48 @@
+
+.techsList{
+
+    width: 92%;
+    max-width: 780px;
+    margin: auto;
+
+    background: #212529;
+    border-radius: 4px;
+
+    list-style: none;
+    padding: 22px 9px;
+}
+
+.techsList li{
+    height: 49px;
+    background: #121214;
+    border-radius: 4px;
+    padding: 12px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+.techsList li:hover{
+    background: #343B41;
+    cursor: pointer;
+}
+
+.techsList li:last-child{
+    margin-bottom: 0;
+}
+
+.techsList li h3{
+    font-weight: 700;
+    font-size: 14px;
+    color: #F8F9FA;
+}
+
+.techsList li p{
+    font-weight: 400;
+    font-size: 12px;
+    color: #868E96;
+
+}
