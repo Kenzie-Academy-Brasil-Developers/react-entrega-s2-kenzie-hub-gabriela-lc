@@ -19,19 +19,16 @@ function DashboardModal({setShowDashboardModal, techsList, setTechsList, setShow
         })
 
     function addTech(data){
-        console.log(data);
         axios.post("https://kenziehub.herokuapp.com/users/techs",data, {
             headers:{
                 Authorization: `Bearer ${token}`
             }
         })
             .then((res) => {
-                console.log(res.data)
                 setTechsList([...techsList, res.data])
 
             })
             .catch((err) => {
-                console.log(err)
                 setShowModal(true)
                 setModalMessage(err.response.data.message)
             })
