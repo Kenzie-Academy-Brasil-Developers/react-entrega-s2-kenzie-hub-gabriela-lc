@@ -2,7 +2,7 @@
 .containerModal{
     width: 100vw;
     height: 100vh;
-    z-index: 1001;
+    z-index: 1002;
 
     position: fixed;
     display: flex;
