@@ -30,7 +30,7 @@ function Dashboard({setShowModal, setModalMessage}){
         <>
             {showDashboardModal && <DashboardModal setShowDashboardModal={setShowDashboardModal} techsList={techsList} setTechsList={setTechsList} setShowModal={setShowModal} setModalMessage={setModalMessage}/>}
             {showEditTechModal && <EditTechModal setShowEditTechModal={setShowEditTechModal} itemClickedId={itemClickedId} userID={userID}/>}
-            {localStorage.getItem("token")? (
+            {!localStorage.getItem("token")? (history.push("/")):(
             <>
             <div className="navbar">
                     <div>
@@ -50,13 +50,8 @@ function Dashboard({setShowModal, setModalMessage}){
                         <TechsList techsList={techsList} setTechsList={setTechsList} userID={userID} setName={setName} setModulo={setModulo} showEditTechModal={showEditTechModal} setShowEditTechModal={setShowEditTechModal} setItemClickedId={setItemClickedId}/>
                     </main>
                 </>
-            ):( 
-                <div className="dashboardNaoLogado">
-                    <h1>Você não pode acessar a Dashboard sem estar logado</h1>
-                    <button onClick={logout}>Logar</button>
-                </div>
             )}
-        </>
+        </> 
     )
 }
 
