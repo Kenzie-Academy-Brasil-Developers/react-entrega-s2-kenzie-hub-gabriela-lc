@@ -3,7 +3,7 @@ import { useEffect} from "react"
 
 import "./TechsList.css"
 
-function TechsList({techsList, setTechsList, userID, setName, setModulo}){
+function TechsList({techsList, setTechsList, userID, setName, setModulo, setShowEditTechModal, setItemClickedId}){
 
 
     useEffect(() => {
@@ -16,11 +16,16 @@ function TechsList({techsList, setTechsList, userID, setName, setModulo}){
             .catch((err) => console.log(err))
     },[])
 
+    function handleClick(e){
+        setShowEditTechModal(true)
+        setItemClickedId(e.target.id)
+    }
+
 
     return(
         <ul className="techsList">
             {techsList?.map((tech) => (
-                <li key={tech.id}>
+                <li onClick={(e) => handleClick(e)} id={tech.id} key={tech.id}>
                     <h3>{tech.title}</h3>
                     <p>{tech.status}</p>
                 </li>

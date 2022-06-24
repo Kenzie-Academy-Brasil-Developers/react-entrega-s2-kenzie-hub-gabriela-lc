@@ -4,11 +4,14 @@ import{useHistory} from "react-router-dom"
 import TechsList from "../../components/TechsList/TechsList"
 import { useState } from "react"
 import DashboardModal from "../../components/DashboardModal/DashboardModal"
+import EditTechModal from "../../components/EditTechModal/EditTechModal"
 
 function Dashboard({setShowModal, setModalMessage, isLoged, setIsLoged}){
 
     const [showDashboardModal, setShowDashboardModal] = useState(false)
     const [techsList, setTechsList] = useState([])
+    const [showEditTechModal, setShowEditTechModal] = useState(false)
+    const [itemClickedId, setItemClickedId] = useState("")
 
     const history = useHistory()
 
@@ -27,6 +30,7 @@ function Dashboard({setShowModal, setModalMessage, isLoged, setIsLoged}){
     return(
         <>
             {showDashboardModal && <DashboardModal setShowDashboardModal={setShowDashboardModal} techsList={techsList} setTechsList={setTechsList} setShowModal={setShowModal} setModalMessage={setModalMessage}/>}
+            {showEditTechModal && <EditTechModal setShowEditTechModal={setShowEditTechModal} techsList={techsList} setTechsList={setTechsList} itemClickedId={itemClickedId} userID={userID}/>}
             {isLoged? (
             <>
             <div className="navbar">
@@ -44,7 +48,7 @@ function Dashboard({setShowModal, setModalMessage, isLoged, setIsLoged}){
                             <h2>Tecnologias</h2>
                             <button onClick={() => setShowDashboardModal(true)}>+</button>
                         </div>
-                        <TechsList techsList={techsList} setTechsList={setTechsList} userID={userID} setName={setName} setModulo={setModulo} />
+                        <TechsList techsList={techsList} setTechsList={setTechsList} userID={userID} setName={setName} setModulo={setModulo} setShowEditTechModal={setShowEditTechModal} setItemClickedId={setItemClickedId}/>
                     </main>
                 </>
             ):( 
