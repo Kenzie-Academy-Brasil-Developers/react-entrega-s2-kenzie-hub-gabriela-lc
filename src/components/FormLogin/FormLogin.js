@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import {useHistory} from "react-router-dom"
 import axios from "axios"
 
-function FormLogin({setShowModal, setModalMessage, setIsLoged}){
+function FormLogin({setShowModal, setModalMessage}){
 
     const formSchema = yup.object().shape({
         email: yup.string().required("Email obrigatório").email("Email não válido"),
@@ -25,7 +25,6 @@ function FormLogin({setShowModal, setModalMessage, setIsLoged}){
             .then((res) => {
                 localStorage.setItem("token",res.data.token)
                 localStorage.setItem("userID",res.data.user.id)
-                setIsLoged(true)
                 history.push("/dashboard")
             })
             .catch((err) => {

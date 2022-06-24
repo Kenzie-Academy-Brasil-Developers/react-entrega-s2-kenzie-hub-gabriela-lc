@@ -26,6 +26,7 @@ function DashboardModal({setShowDashboardModal, techsList, setTechsList, setShow
         })
             .then((res) => {
                 setTechsList([...techsList, res.data])
+                setShowDashboardModal(false)
 
             })
             .catch((err) => {
