@@ -1,22 +1,10 @@
-import * as yup from 'yup';
-import { useForm } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 
 import "./EditTechModal.css"
 import { useEffect, useState } from 'react';
 
-function EditTechModal({setShowEditTechModal,techsList,setTechsList, itemClickedId, userID}){
+function EditTechModal({setShowEditTechModal, itemClickedId, userID}){
     const token = localStorage.getItem("token")
-
-    const formSchema = yup.object().shape({
-        title: yup.string().required("Nome obrigatório"),
-      })
-
-
-    const {register, handleSubmit, formState: { errors }} = useForm({
-            resolver: yupResolver(formSchema)
-        })
 
     const [techClicked, setTechClicked] = useState("")
 
@@ -30,22 +18,34 @@ function EditTechModal({setShowEditTechModal,techsList,setTechsList, itemClicked
                 .catch((err) => console.log(err))
         },[])
 
-    function editTech(data){
-        axios.put(`https://kenziehub.herokuapp.com/users/techs/${itemClickedId}`,data, {
+    function editTech(e){
+        e.preventDefault()
+        axios.put(`https://kenziehub.herokuapp.com/users/techs/${itemClickedId}`,techClicked, {
             headers:{
                 Authorization: `Bearer ${token}`
             }
         })
             .then((res) => {
-                setTechsList([...techsList, res.data])
+                setShowEditTechModal(false)
 
             })
             .catch((err) => {
                 console.log(err);
-                // setShowModal(true)
-                // setModalMessage(err.response.data.message)
             })
 
+    }
+
+    function deleteTech(e){
+        e.preventDefault()
+        axios.delete(`https://kenziehub.herokuapp.com/users/techs/${itemClickedId}`,{
+            headers:{
+                Authorization: `Bearer ${token}`
+            }
+        })
+            .then((res) => {
+                setShowEditTechModal(false)
+            })
+            .catch((err) => console.log(err))
     }
 
     return(
@@ -55,20 +55,18 @@ function EditTechModal({setShowEditTechModal,techsList,setTechsList, itemClicked
                     <h3>Detalhes Tecnologia</h3>
                     <button onClick={() => setShowEditTechModal(false)}>X</button>
                 </div>
-                <form id='editTechForm' onSubmit={handleSubmit(editTech)}>
+                <form id='editTechForm'>
                     <label>Nome</label>
-                    <input value={techClicked.title}/>
-                    <span>{errors.title?.message}</span>
+                    <input placeholder={techClicked.title} disabled/>
                     <label>Status</label>
-                    <select value={techClicked.status}{...register("status")}>
-                        <option>Iniciante</option>
-                        <option>Intermediário</option>
-                        <option>Avançado</option>
+                    <select value={techClicked.status} onChange={(e) => setTechClicked({...techClicked, status: e.target.value})} >
+                        <option value="Iniciante">Iniciante</option>
+                        <option value="Intermediário">Intermediário</option>
+                        <option value="Avançado">Avançado</option>
                     </select>
-                    <span>{errors.status?.message}</span>
                     <div className='divButtons'>
-                        <button id="editBtn" type='submit'>Editar Tecnologia</button>
-                        <button id="exBtn">Excluir</button>
+                        <button onClick={(e) => editTech(e)} id="editBtn">Editar Tecnologia</button>
+                        <button onClick={(e) => deleteTech(e)} id="exBtn">Excluir</button>
                     </div>
                 </form>
             </div>

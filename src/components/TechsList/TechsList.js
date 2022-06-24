@@ -3,7 +3,7 @@ import { useEffect} from "react"
 
 import "./TechsList.css"
 
-function TechsList({techsList, setTechsList, userID, setName, setModulo, setShowEditTechModal, setItemClickedId}){
+function TechsList({techsList, setTechsList, userID, setName, setModulo, showEditTechModal, setShowEditTechModal, setItemClickedId}){
 
 
     useEffect(() => {
@@ -14,7 +14,7 @@ function TechsList({techsList, setTechsList, userID, setName, setModulo, setShow
                 setModulo(res.data.course_module)
             })
             .catch((err) => console.log(err))
-    },[])
+    },[,showEditTechModal])
 
     function handleClick(e){
         setShowEditTechModal(true)

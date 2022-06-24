@@ -6,7 +6,7 @@ import { useState } from "react"
 import DashboardModal from "../../components/DashboardModal/DashboardModal"
 import EditTechModal from "../../components/EditTechModal/EditTechModal"
 
-function Dashboard({setShowModal, setModalMessage, isLoged, setIsLoged}){
+function Dashboard({setShowModal, setModalMessage}){
 
     const [showDashboardModal, setShowDashboardModal] = useState(false)
     const [techsList, setTechsList] = useState([])
@@ -17,7 +17,6 @@ function Dashboard({setShowModal, setModalMessage, isLoged, setIsLoged}){
 
     function logout(){
         localStorage.clear()
-        setIsLoged(false)
         history.push("/")
     }
 
@@ -30,8 +29,8 @@ function Dashboard({setShowModal, setModalMessage, isLoged, setIsLoged}){
     return(
         <>
             {showDashboardModal && <DashboardModal setShowDashboardModal={setShowDashboardModal} techsList={techsList} setTechsList={setTechsList} setShowModal={setShowModal} setModalMessage={setModalMessage}/>}
-            {showEditTechModal && <EditTechModal setShowEditTechModal={setShowEditTechModal} techsList={techsList} setTechsList={setTechsList} itemClickedId={itemClickedId} userID={userID}/>}
-            {isLoged? (
+            {showEditTechModal && <EditTechModal setShowEditTechModal={setShowEditTechModal} itemClickedId={itemClickedId} userID={userID}/>}
+            {localStorage.getItem("token")? (
             <>
             <div className="navbar">
                     <div>
@@ -48,7 +47,7 @@ function Dashboard({setShowModal, setModalMessage, isLoged, setIsLoged}){
                             <h2>Tecnologias</h2>
                             <button onClick={() => setShowDashboardModal(true)}>+</button>
                         </div>
-                        <TechsList techsList={techsList} setTechsList={setTechsList} userID={userID} setName={setName} setModulo={setModulo} setShowEditTechModal={setShowEditTechModal} setItemClickedId={setItemClickedId}/>
+                        <TechsList techsList={techsList} setTechsList={setTechsList} userID={userID} setName={setName} setModulo={setModulo} showEditTechModal={showEditTechModal} setShowEditTechModal={setShowEditTechModal} setItemClickedId={setItemClickedId}/>
                     </main>
                 </>
             ):( 
