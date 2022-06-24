@@ -2,6 +2,7 @@ import "./FormRegister.css"
 
 import * as yup from 'yup';
 import { useForm } from "react-hook-form";
+import {useHistory} from "react-router-dom"
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from "axios"
 
@@ -22,16 +23,23 @@ function FormRegister({setShowModal, setModalMessage}){
         resolver: yupResolver(formSchema),
       })
 
+    const history = useHistory()
+
+
     function handleForm(data){
         axios.post("https://kenziehub.herokuapp.com/users", data)
             .then((res) => {
                 setShowModal(true)
                 setModalMessage("Conta criada com sucesso")
+                setTimeout(() => {
+                    history.push("/")
+                    setShowModal(false)
+                },3000)
             })
             .catch((err) => {
                 setShowModal(true)
-                setModalMessage("Ops! Algo deu errado")
-
+                setModalMessage(`Ops! Algo deu errado: ${err.response.data.message}`)
+                setTimeout(() => setShowModal(false),5000)
             })
 
     }
